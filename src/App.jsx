@@ -1,67 +1,48 @@
-import MyTitle from "./components/MyTitle";
 import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar";
+import "./App.css";
 import { useState } from "react";
 
 const pokemonList = [
   {
-    name: "bulbasaur",
+    name: "Bulbasaur",
     imgSrc:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
   },
   {
-    name: "charmander",
+    name: "Charmander",
     imgSrc:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
   },
   {
-    name: "squirtle",
+    name: "Squirtle",
     imgSrc:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
   },
   {
-    name: "pikachu",
+    name: "Pikachu",
     imgSrc:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
   },
   {
-    name: "mew",
+    name: "Mew",
   },
 ];
 
-
-
-
-
-
 function App() {
-  const [pokemonIndex, setPokemonIdex] = useState(0);
-  function handleNext() {
-    if (pokemonIndex === pokemonList.length -1) {
-      setPokemonIdex(pokemonList.length -1)
-    } else {
-      setPokemonIdex(pokemonIndex +1)
-    }
-  };
+  const [pokemonIndex, setPokemon] = useState(0);
+  const pokemon = pokemonList[pokemonIndex];
 
-  function handleBefore() {
-    if (pokemonIndex == 0) {
-      setPokemonIdex(0)
-    } else {
-      setPokemonIdex(pokemonIndex -1)
-    }
-  };
   return (
-    <>
     <div>
-      <MyTitle />
-      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      <PokemonCard pokemon={pokemon} />
+      <NavBar
+        setPokemon={setPokemon}
+        pokemonIndex={pokemonIndex}
+        pokeLength={pokemonList.length}
+      />
     </div>
-    <p>{pokemonIndex}</p>
-    {pokemonIndex > 0 && <button onClick={handleBefore}>Avant</button>}
-    {pokemonIndex < pokemonList.length - 1 && <button onClick={handleNext}>Après</button>}
-    </>
   );
-
 }
 
 export default App;
