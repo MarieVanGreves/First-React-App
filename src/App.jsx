@@ -34,7 +34,7 @@ function App() {
   const pokemon = pokemonList[pokemonIndex];
 
   useEffect(() => {
-    alert("Hello Pokemon Trainer :)");
+    alert("hello pokemon trainer :)");
   }, []);
 
   return (
